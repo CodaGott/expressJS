@@ -49,7 +49,7 @@ exports.getAllTours = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    data: { tours: tours },
+    data: { tours },
   });
   //   try {
   //   console.log(req.query);

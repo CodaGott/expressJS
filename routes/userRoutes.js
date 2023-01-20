@@ -10,6 +10,7 @@ const authController = require('../controllers/authenticationController.js');
 const router = express.Router();
 
 router.post('/signup', authController.signup);
+router.post('/login', authController.login);
 
 router.param('id', (req, res, next, val) => {
   console.log(`User id is: ${val}`);
