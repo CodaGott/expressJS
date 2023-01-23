@@ -12,6 +12,9 @@ const router = express.Router();
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
 
+router.post('/forgotPassword', authController.forgotPassword);
+router.patch('/resetPassword/:token', authController.resetPassword);
+
 router.param('id', (req, res, next, val) => {
   console.log(`User id is: ${val}`);
   next();
