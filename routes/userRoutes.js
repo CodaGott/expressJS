@@ -5,6 +5,7 @@ const {
   deleteUser,
   getUser,
   updateUser,
+  updateMe,
 } = require('../controllers/userController');
 const authController = require('../controllers/authenticationController.js');
 const router = express.Router();
@@ -15,7 +16,13 @@ router.post('/login', authController.login);
 router.post('/forgotPassword', authController.forgotPassword);
 router.patch('/resetPassword/:token', authController.resetPassword);
 
-router.patch('/updateMyPassword', authController.protect, authController.updatePassword)
+router.patch(
+  '/updateMyPassword',
+  authController.protect,
+  authController.updatePassword
+);
+
+router.patch('/updateMe', authController.protect, updateMe);
 
 router.param('id', (req, res, next, val) => {
   console.log(`User id is: ${val}`);
