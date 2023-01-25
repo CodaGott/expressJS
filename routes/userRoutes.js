@@ -15,6 +15,8 @@ router.post('/login', authController.login);
 router.post('/forgotPassword', authController.forgotPassword);
 router.patch('/resetPassword/:token', authController.resetPassword);
 
+router.patch('/updateMyPassword', authController.protect, authController.updatePassword)
+
 router.param('id', (req, res, next, val) => {
   console.log(`User id is: ${val}`);
   next();
