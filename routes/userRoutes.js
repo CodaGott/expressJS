@@ -6,6 +6,7 @@ const {
   getUser,
   updateUser,
   updateMe,
+  deleteMe,
 } = require('../controllers/userController');
 const authController = require('../controllers/authenticationController.js');
 const router = express.Router();
@@ -23,6 +24,7 @@ router.patch(
 );
 
 router.patch('/updateMe', authController.protect, updateMe);
+router.delete('/deleteMe', authController.protect, deleteMe);
 
 router.param('id', (req, res, next, val) => {
   console.log(`User id is: ${val}`);
