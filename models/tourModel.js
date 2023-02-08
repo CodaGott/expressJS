@@ -106,6 +106,7 @@ const tourSchema = new mongoose.Schema(
       },
     ],
     // guides: Array,For embedded
+    //Below is called child refrencing
     guides: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   },
   {
@@ -116,6 +117,13 @@ const tourSchema = new mongoose.Schema(
 
 tourSchema.virtual('durationWeeks').get(function () {
   return this.duration / 7;
+});
+
+//This is virtual populate
+tourSchema.virtual('reviews', {
+  ref: 'Review',
+  foreignField: 'tour',
+  localField: '_Id',
 });
 
 //DOCUMENT MIDDLEWARE: runs before .save() and .create()
